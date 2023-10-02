@@ -1,0 +1,95 @@
+*{
+    margin:0;
+    padding:0;
+}
+body {
+    width:100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container {
+    width:80%;
+    height: 85%;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+.points{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left:40px;
+}
+/*---------------------------------*/
+.jeu {
+    margin-right: 40px;
+}
+/*---------------------------------*/
+
+.XO {
+    display: grid;
+    width:100%;
+    height: 80%;
+    grid-template-rows: repeat(3,33%);
+    grid-template-columns: repeat(3,33%);
+}
+.jeu {
+    width:320px;
+    height: 70%;
+
+}
+.XO div {
+    margin:4px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    font-size: 45px;
+    border-radius: 18px;
+
+}
+.jeu .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    margin:4px;
+    font-size: 30px;
+    border-radius: 18px;
+
+}
+
+
+
+.points {
+    width:200px;
+}
+button {
+    padding: 6px;
+    border: none;
+    margin: 3px;
+    border-radius: 25px;
+}
+.red button {
+    border: 3px solid rgb(255, 0, 0);
+}
+.total {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:15px;
+}
+.total{
+    border-radius: 8px;
+    margin: 3px;
+    color:white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 25px;
+}
+.red .total {
+    background: linear-gradient(120deg,rgb(245, 138, 138),rgb(246, 96, 96),#f00,rgb(141, 7, 7),rgb(79, 9, 9),rgb(45, 8, 8),rgb(79, 9, 9),rgb(141, 7, 7),rgb(246, 96, 96),rgb(245, 138, 138));
+}
+.green .total {
+    background-color: green;
+}
