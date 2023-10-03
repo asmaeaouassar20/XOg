@@ -104,7 +104,7 @@ function winner(){
         t=setInterval(function(){
             addpoints.innerHTML='+1';
             addpoints.style.color='#f00';
-            body.style.backgroundColor= "rgb(255, 210, 210)";
+            body.style.bagitckgroundColor= "rgb(255, 210, 210)";
         },20);
         setTimeout(function(){
             clearInterval(t);
