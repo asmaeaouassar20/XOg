@@ -35,6 +35,8 @@ var T=[];// tableau qui stocke les 'x' et les 'o'
 
 var turn='x'; // par défaut, le tour est le tour de x (on commence par x)
 
+var count=0; //variable pour compter le nombre de cases cochées
+
 //la fonction qui permet de cocher les cases
 function play(id,i){
     var caseClick=document.getElementById(id);
@@ -42,11 +44,13 @@ function play(id,i){
         caseClick.innerHTML='x';
         caseClick.style.color='rgb(189, 16, 16)';
         turn='o';
+        count++;
     }
     if(turn=='o' && caseClick.innerHTML==''){
         caseClick.innerHTML='o';
         caseClick.style.color='rgb(6, 133, 6)';
         turn='x';
+        count++;
     }
     T[i-1]=caseClick.innerHTML;
     winner();
@@ -71,7 +75,9 @@ function restartplaying(){
         document.getElementById('d8').innerHTML='';
         document.getElementById('d9').innerHTML='';
     },1000);
-   
+    turn='x';
+    count=0;
+    T=[];
 }
 //-------------------------------------------
 function winner(){
@@ -80,9 +86,7 @@ function winner(){
         winner=T[0];
     }
     if(T[2]==T[5] && T[5]==T[8] && T[2]!=undefined){
-
         winner=T[2];
-
     }
     if(T[8]==T[7] && T[7]==T[6] && T[8]!=undefined){
         winner=T[8];
@@ -121,6 +125,8 @@ function winner(){
         divTotalRed.innerHTML=tabPoints[0];
         T=[];
         restartplaying();
+        turn='x';
+        count=0;
     }
     if(winner==='o'){
         t= setInterval(()=>{
@@ -137,9 +143,11 @@ function winner(){
         divTotalGreen.innerHTML=tabPoints[1];
         restartplaying();
         T=[];
-        restartplaying();
+        turn='x';
+        count=0;
     }
-   
+    console.log(count);
+    if(count==9 && winner==='') restartplaying();
     localStorage.setItem('T',JSON.stringify(tabPoints));
 }
 
@@ -148,7 +156,7 @@ function restartfct(){
     localStorage.clear();
     divTotalRed.innerHTML='0';
     divTotalGreen.innerHTML='0';
-
+    tabPoints=[0,0];
     document.getElementById('d1').innerHTML='';
     document.getElementById('d2').innerHTML='';
     document.getElementById('d3').innerHTML='';
