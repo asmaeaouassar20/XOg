@@ -4,23 +4,22 @@ var btnRed=document.getElementById('btnRed')
 var divTotalRed=document.getElementById('divTotalRed'),
     divTotalGreen=document.getElementById('divTotalGreen');
 
-
-var title=document.getElementById('title');
-
-var x=document.getElementById('x'),
-    o=document.getElementById('o');
-
-var addpoints=document.getElementById('addpoints');
+var addpointsR=document.getElementById('addpointsR'),
+    addpointsG=document.getElementById('addpointsG');
 
 var body=document.getElementById('body');
 
-// ----------------------------------
-addpoints.innerHTML='';//espace dédié à montrer le point ajouté pour le gagneur (rouge/vert)
+// ----------------------------------------------
+addpointsR.innerHTML='';//espace dédié à montrer le point ajouté pour le gagneur (rouge/vert)
+addpointsG.innerHTML='';
+// ----------------------------------------------
 
-
+// cette fonction permet de remplir le total des points de chaque utilisateur dans le DIV spécifé à chaque fois on actualise la page
+function display(){
+    divTotalRed.innerHTML=tabPoints[0];
+    divTotalGreen.innerHTML=tabPoints[1];
+}
 // ---------------------------
-
-
  //les fonctions qui permettent d'afficher le total des points pour chaque joueurs
 function displayREDtotal(){
     divTotalRed.style.display='block';
@@ -32,11 +31,9 @@ function displayGREENtotal(){
     btnGreen.style.display='none';
 }
 
+var T=[];// tableau qui stocke les 'x' et les 'o'
 
-var T=[];
-
-
-var turn='x'; // par défaut, le tour est le tour de x
+var turn='x'; // par défaut, le tour est le tour de x (on commence par x)
 
 //la fonction qui permet de cocher les cases
 function play(id,i){
@@ -54,21 +51,29 @@ function play(id,i){
     T[i-1]=caseClick.innerHTML;
     winner();
 }
-
 //-----------------------------------------
 
+var tabPoints; // tableau qui stocke le total des points pour chaque joueur: t[0] pour le ROUGE et t[1] pour le vert
 
-
-
-
-var tabPoints=[0,0];
-
-
-
-
+if(localStorage.length==0) tabPoints=[0,0]
+else tabPoints=JSON.parse(localStorage.T);
+display();
+//---------------------------------
+function restartplaying(){
+   setTimeout(()=>{
+        document.getElementById('d1').innerHTML='';
+        document.getElementById('d2').innerHTML='';
+        document.getElementById('d3').innerHTML='';
+        document.getElementById('d4').innerHTML='';
+        document.getElementById('d5').innerHTML='';
+        document.getElementById('d6').innerHTML='';
+        document.getElementById('d7').innerHTML='';
+        document.getElementById('d8').innerHTML='';
+        document.getElementById('d9').innerHTML='';
+    },1000);
+   
+}
 //-------------------------------------------
-
-
 function winner(){
     var winner='';
     if(T[0]==T[1] && T[1]==T[2] && T[0]!=undefined){
@@ -101,41 +106,49 @@ function winner(){
     }
     var t;
     if(winner==='x'){
+
         t=setInterval(function(){
-            addpoints.innerHTML='+1';
-            addpoints.style.color='#f00';
-            body.style.bagitckgroundColor= "rgb(255, 210, 210)";
+            addpointsR.innerHTML='+1';
+            addpointsR.style.color='#f00';
+            body.style.backgroundColor= "rgb(255, 210, 210)";
         },20);
         setTimeout(function(){
             clearInterval(t);
-            addpoints.innerHTML='';
+            addpointsR.innerHTML='';
             body.style.backgroundColor= "#2b2b2a53";
         },1000);
         tabPoints[0]+=1;
         divTotalRed.innerHTML=tabPoints[0];
+        T=[];
+        restartplaying();
     }
     if(winner==='o'){
         t= setInterval(()=>{
-            addpoints.innerHTML='+1';
-            addpoints.style.color='rgb(20, 141, 20)';
+            addpointsG.innerHTML='+1';
+            addpointsG.style.color='rgb(20, 141, 20)';
             body.style.backgroundColor='#d4fcd4';
         },20);
         setTimeout(()=>{
             clearInterval(t);
-            addpoints.innerHTML='';
+            addpointsG.innerHTML='';
             body.style.backgroundColor= "#2b2b2a53";
         },1000);
         tabPoints[1]+=1;
         divTotalGreen.innerHTML=tabPoints[1];
+        restartplaying();
+        T=[];
+        restartplaying();
     }
+   
     localStorage.setItem('T',JSON.stringify(tabPoints));
 }
 
-
-
+//fct qui actualise le jeu
 function restartfct(){
-    divTotalGreen.innerHTML='';
-    divTotalRed.innerHTML='';
+    localStorage.clear();
+    divTotalRed.innerHTML='0';
+    divTotalGreen.innerHTML='0';
+
     document.getElementById('d1').innerHTML='';
     document.getElementById('d2').innerHTML='';
     document.getElementById('d3').innerHTML='';
@@ -145,4 +158,5 @@ function restartfct(){
     document.getElementById('d7').innerHTML='';
     document.getElementById('d8').innerHTML='';
     document.getElementById('d9').innerHTML='';
+  
 }

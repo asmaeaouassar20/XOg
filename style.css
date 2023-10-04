@@ -9,7 +9,6 @@ body {
     justify-content: center;
     align-items: center;
     background-color:#2b2b2a53;
-   
 }
 .container {
     width:80%;
@@ -17,25 +16,76 @@ body {
     display: flex;
     justify-content:space-around;
     align-items: center;
-
 }
-/* ---------------------- */
-#addpoints{
+/*---------------- calcul des points --------------------*/
+#addpointsR, #addpointsG{
     width:100px;
     height: 100px;
     text-align: center;
     font-size: 65px;
     font-weight: 800;
 }
-
-/*____________ partie qui pour caluler le tatal des points _____________*/
 .spoints{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+.total{
+    margin-left:5px;
+    margin-right:5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:70px;
+    height:40px;
+    border-radius: 8px;
+    color:white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 25px;
+    box-shadow: 2px 2px 15px #000;
+    text-align: center;
+    transition: all 0.7s ease;
+}
+.total:hover{
+    width:75px;
+    height:45px;
+}
+button {
+    margin-top: 35px;
+    margin-bottom: 6px;
+    margin-left:5px;
+    margin-right:5px;
+    width:70px;
+    height: 6px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.7s ease;
+}
+.totalR {
+    background: linear-gradient(120deg,rgb(245, 138, 138),rgb(246, 96, 96),#f00,rgb(141, 7, 7),rgb(79, 9, 9),rgb(45, 8, 8),rgb(79, 9, 9),rgb(141, 7, 7),rgb(246, 96, 96),rgb(245, 138, 138)); 
+}
+.totalG {
+    background: linear-gradient(120deg,rgb(181, 251, 181),rgb(96, 255, 96),rgb(17, 193, 17),rgb(26, 137, 26),rgb(14, 65, 14),rgb(16, 35, 16),rgb(14, 65, 14),rgb(26, 137, 26),rgb(17, 193, 17),rgb(96, 255, 96),rgb(181, 251, 181));
+}
 
-/*____________ partie qui pour le jeu  _____________*/
+.red button {
+    border: 3px solid rgb(255, 0, 0);
+    box-shadow: 1px 1px 12px #f00;
+    background-color: rgba(255, 0, 0, 0.66);
+}
+.green button {
+    border: 3px solid rgb(0, 255, 0);
+    box-shadow: 1px 1px 12px #0f0;
+    background-color: rgba(0, 255,0,0.4);
+}
+/*---------------- partie du jeu --------------------*/
+.mainContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .jeu {
     display: grid;
     width:320px;
@@ -56,99 +106,6 @@ body {
 .jeu div:hover {
     background-color:#2b2b2a7e;
 }
-/* #title {
-   text-align: center;
-    height: 50px;
-    margin-bottom:30px;
-    font-size: 30px;
-    border-radius: 18px;
-    box-shadow: 6px 6px 20px #82816a;
-    display: none;
-} */
-span{
-    font-weight: 800;
-}
-#x {
-    color:#f00;
-}
-#o{
-    color:#0f0;
-}
-
-/*----------------------------------------------*/
-
-button {
-    padding: 6px;
-    border: none;
-    margin: 3px;
-    border-radius: 25px;
-    width:80px;
-    height: 22px;
-    cursor: pointer;
-    transition: all 0.7s ease;
-}
-button:hover {
-    width:90px;
-    height: 30px;
-}
-.totalR {
-    background: linear-gradient(120deg,rgb(245, 138, 138),rgb(246, 96, 96),#f00,rgb(141, 7, 7),rgb(79, 9, 9),rgb(45, 8, 8),rgb(79, 9, 9),rgb(141, 7, 7),rgb(246, 96, 96),rgb(245, 138, 138));
-    
-}
-.totalG {
-    background: linear-gradient(120deg,rgb(181, 251, 181),rgb(96, 255, 96),rgb(17, 193, 17),rgb(26, 137, 26),rgb(14, 65, 14),rgb(16, 35, 16),rgb(14, 65, 14),rgb(26, 137, 26),rgb(17, 193, 17),rgb(96, 255, 96),rgb(181, 251, 181));
-
-}
-
-.red button {
-    border: 3px solid rgb(255, 0, 0);
-    box-shadow: 1px 1px 12px #f00;
-    background-color: rgba(255, 0, 0, 0.66);
-}
-.green button {
-    border: 3px solid rgb(0, 255, 0);
-    box-shadow: 1px 1px 12px #0f0;
-    background-color: rgba(0, 255,0,0.4);
-}
-.total{
-    width:70px;
-    height: 30px;
-    padding:15px;
-    border-radius: 8px;
-    margin: 3px;
-    color:white;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 25px;
-    box-shadow: 2px 2px 15px #000;
-    display: none;
-    text-align: center;
-
-}
-/*------------------------------*/
-
-
-/*------------------------------*/
-
-#restart {
-    margin-top:15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 22px;
-    font-weight: 800;
-    padding:8px;
-    box-shadow: 3px 3px 18px #282727;
-    background-color:#ffff001e;
-    border-radius: 8px;
-    cursor:pointer;
-    transition: all .5s ease;
-}
-#restart:hover {
-    background-color:#ffff001e;
-    transform: scale(1.1);
-}
-/*-----------------------------*/
-
 
 .Da{
     animation-name: DA;
@@ -181,4 +138,24 @@ button:hover {
         border-left: 2px solid #0f0;
         border-top: 2px solid #f00;
     }
+}
+/*---------------- le bouton d'actualisation --------------------*/
+#restart {
+    margin-top:15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    font-weight: 800;
+    padding:8px;
+    box-shadow: 3px 3px 18px #282727;
+    background-color:#ffff001e;
+    border-radius: 8px;
+    cursor:pointer;
+    transition: all .5s ease;
+    height:15px;
+}
+#restart:hover {
+    background-color:#ffff001e;
+    transform: scale(1.1);
 }

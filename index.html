@@ -1,49 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
     <title>Jeu X O</title>
 </head>
+
 <body id="body">
     <div class="container">
-        <div class="points">
-            <div class="spoints">
-                <div class="red">
-                    <button onclick="displayREDtotal()" id="btnRed"></button>
-                    <div class="totalR total" id="divTotalRed"></div>
-                </div>
-    
-    
-                <div class="green">
-                    <button onclick="displayGREENtotal()" id="btnGreen"></button>
-                    <div class="totalG total" id="divTotalGreen"></div>
-                </div>
+
+        <div id="addpointsR"></div><!-- pou ajouter des points au ROUGE-->
+
+        <div class="mainContent">
+            <div class="jeu">
+                <div onclick="play(this.id,1)" id="d1" class="Da"></div>
+                <div onclick="play(this.id,2)" id="d2" class="Db"></div>
+                <div onclick="play(this.id,3)" id="d3" class="Da"></div>
+                <div onclick="play(this.id,4)" id="d4" class="Db"></div>
+                <div onclick="play(this.id,5)" id="d5" class="Db"></div>
+                <div onclick="play(this.id,6)" id="d6" class="Db"></div>
+                <div onclick="play(this.id,7)" id="d7" class="Da"></div>
+                <div onclick="play(this.id,8)" id="d8" class="Db"></div>
+                <div onclick="play(this.id,9)" id="d9" class="Da"></div>
             </div>
-            <div id="restart" onclick="restartfct()">Restart</div>
+
+            <div class="points"><!-- partie dédié au calcul et au stockage du total des points pour chaque joueur-->
+                <div class="spoints">
+                    <div class="red">
+                        <button id="btnRed"></button>
+                        <div class="totalR total" id="divTotalRed"></div>
+                    </div>
+
+                    <div class="green">
+                        <button id="btnGreen"></button>
+                        <div class="totalG total" id="divTotalGreen"></div>
+                    </div>
+                </div>
+
+                <div id="restart" onclick="restartfct()">Restart</div>
+            </div>
         </div>
 
+        <div id="addpointsG"></div><!-- pou ajouter des points au VERT-->
 
-<div id="addpoints"></div>
-
-
-        <div class="jeu">
-            <!-- <div id="title"><span id="x"></span>&nbsp; <span id="o"></span></div> -->
-
-    
-                    <div onclick="play(this.id,1)" id="d1" class="Da" ></div>
-                    <div onclick="play(this.id,2)" id="d2" class="Db"></div>
-                    <div onclick="play(this.id,3)" id="d3" class="Da"></div>
-                    <div onclick="play(this.id,4)" id="d4" class="Db"></div>
-                    <div onclick="play(this.id,5)" id="d5" class="Db"></div>
-                    <div onclick="play(this.id,6)" id="d6" class="Db"></div>
-                    <div onclick="play(this.id,7)" id="d7" class="Da"></div>
-                    <div onclick="play(this.id,8)" id="d8" class="Db"></div>
-                    <div onclick="play(this.id,9)" id="d9" class="Da"></div>
-              
-        </div>
     </div>
     <script src="./script.js"></script>
 </body>
+
 </html>
